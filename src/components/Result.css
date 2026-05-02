@@ -1,0 +1,191 @@
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.result-badge {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.result-badge.pass {
+  color: #2e7d32;
+  background: #e8f5e9;
+}
+
+.result-badge.fail {
+  color: #c62828;
+  background: #ffebee;
+}
+
+.result-score {
+  text-align: center;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+}
+
+.score-num {
+  font-size: 64px;
+  font-weight: bold;
+  color: var(--sake-green);
+  line-height: 1;
+}
+
+.score-unit {
+  font-size: 24px;
+  color: var(--sake-green);
+}
+
+.score-detail {
+  font-size: 14px;
+  color: var(--text-sub);
+  margin-left: 8px;
+}
+
+.result-message {
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.result-message strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.result-message.pass {
+  background: #e8f5e9;
+  border-left: 4px solid #2e7d32;
+  color: #1b5e20;
+}
+
+.result-message.fail {
+  background: #fff8e1;
+  border-left: 4px solid var(--sake-gold);
+  color: #5d4037;
+}
+
+/* ── Certificate ── */
+.certificate {
+  padding: 4px;
+  background: linear-gradient(135deg, var(--sake-gold) 0%, #e8c84a 50%, var(--sake-gold) 100%);
+  border-radius: 12px;
+}
+
+.cert-border {
+  background: white;
+  border-radius: 10px;
+  padding: 28px 24px;
+  text-align: center;
+  border: 2px solid var(--sake-gold-light);
+}
+
+.cert-label {
+  font-size: 11px;
+  color: var(--text-sub);
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+
+.cert-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--sake-green);
+  margin-bottom: 4px;
+}
+
+.cert-subtitle {
+  font-size: 15px;
+  color: var(--sake-gold);
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.cert-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--sake-gold);
+  margin: 12px auto;
+}
+
+.cert-module {
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-bottom: 4px;
+}
+
+.cert-score {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.cert-date {
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-bottom: 12px;
+}
+
+.cert-note {
+  font-size: 11px;
+  color: var(--text-sub);
+  background: var(--bg);
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/* ── Breakdown ── */
+.breakdown-title {
+  font-size: 15px;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.breakdown-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.breakdown-item.ok {
+  background: #f1f8f2;
+}
+
+.breakdown-item.ng {
+  background: #fff5f5;
+}
+
+.breakdown-mark {
+  font-size: 16px;
+  font-weight: bold;
+  min-width: 20px;
+}
+
+.breakdown-item.ok .breakdown-mark { color: #2e7d32; }
+.breakdown-item.ng .breakdown-mark { color: #c62828; }
+
+.breakdown-body { flex: 1; }
+
+.breakdown-q {
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.breakdown-ans {
+  margin-top: 4px;
+  color: #c62828;
+  font-size: 13px;
+}

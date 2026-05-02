@@ -1,0 +1,100 @@
+.module-select {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.module-hero {
+  background: var(--sake-green-light);
+  border-radius: 8px;
+  padding: 16px 20px;
+  border-left: 4px solid var(--sake-green);
+}
+
+.module-tagline {
+  color: var(--sake-green);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.module-heading {
+  font-size: 17px;
+  color: var(--text);
+}
+
+.module-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.module-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+  width: 100%;
+}
+
+.module-item:hover {
+  border-color: var(--sake-green);
+  background: var(--sake-green-light);
+}
+
+.module-num {
+  font-size: 11px;
+  font-weight: bold;
+  color: var(--sake-green);
+  background: var(--sake-green-light);
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.module-name {
+  flex: 1;
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.module-count {
+  font-size: 13px;
+  color: var(--text-sub);
+  white-space: nowrap;
+}
+
+.module-divider {
+  text-align: center;
+  color: var(--text-sub);
+  font-size: 13px;
+  position: relative;
+}
+
+.module-divider::before,
+.module-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: var(--border);
+}
+.module-divider::before { left: 0; }
+.module-divider::after { right: 0; }
+
+.module-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-sub);
+  background: var(--sake-gold-light);
+  border-radius: 8px;
+  padding: 12px;
+  line-height: 1.7;
+}

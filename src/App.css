@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --sake-green: #1a6b3a;
+  --sake-green-light: #e8f4ed;
+  --sake-gold: #b8860b;
+  --sake-gold-light: #fdf6e3;
+  --bg: #fafaf7;
+  --card: #ffffff;
+  --border: #e2e0d8;
+  --text: #2c2c2c;
+  --text-sub: #666;
+  --radius: 12px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+.app-header {
+  background: var(--sake-green);
+  color: white;
+  padding: 16px 24px;
+}
+
+.header-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-logo {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: bold;
+  flex: 1;
+}
+
+.header-sub {
+  font-size: 12px;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+/* ── Main ── */
+.app-main {
+  flex: 1;
+  padding: 32px 16px 64px;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ── Button ── */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.btn:hover { opacity: 0.85; }
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--sake-green);
+  color: white;
+}
+
+.btn-outline {
+  background: white;
+  color: var(--sake-green);
+  border: 2px solid var(--sake-green);
+}
+
+.btn-full { width: 100%; text-align: center; }
