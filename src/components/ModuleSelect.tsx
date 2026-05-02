@@ -1,4 +1,5 @@
-import { MODULE_NAMES, questions } from '../data/questions'
+import { questions } from '../data/questions'
+import { PASS_SCORE } from '../data/questions'
 import './ModuleSelect.css'
 
 type Props = {
@@ -8,48 +9,40 @@ type Props = {
 }
 
 export function ModuleSelect({ userName, onStart, onGuide }: Props) {
-  const modules = Object.entries(MODULE_NAMES)
-
   return (
     <div className="module-select card">
       <div className="module-hero">
-        <p className="module-tagline"><strong>{userName}</strong> さん、ようこそ。テストを選択してください。</p>
+        <p className="module-welcome"><strong>{userName}</strong> さん、ようこそ</p>
+        <p className="module-tagline">テスト開始前に、蔵見学テキストで知識を確認しましょう</p>
       </div>
 
       <button className="guide-entry-btn" onClick={onGuide}>
         蔵見学テキストを読む（学習コンテンツ）
       </button>
 
-      <h2 className="module-heading">テストを選択してください</h2>
-
-      <div className="module-list">
-        {modules.map(([num, name]) => {
-          const moduleNum = Number(num)
-          const count = questions.filter(q => q.module === moduleNum).length
-          return (
-            <button
-              key={num}
-              className="module-item"
-              onClick={() => onStart(moduleNum)}
-            >
-              <span className="module-num">Module {num}</span>
-              <span className="module-name">{name.replace(`Module ${num}：`, '')}</span>
-              <span className="module-count">{count}問</span>
-            </button>
-          )
-        })}
+      <div className="module-info-grid">
+        <div className="module-info-item">
+          <span className="module-info-num">{questions.length}問</span>
+          <span className="module-info-label">全問出題</span>
+        </div>
+        <div className="module-info-divider" />
+        <div className="module-info-item">
+          <span className="module-info-num">{PASS_SCORE}点</span>
+          <span className="module-info-label">合格ライン</span>
+        </div>
+        <div className="module-info-divider" />
+        <div className="module-info-item">
+          <span className="module-info-num">30秒</span>
+          <span className="module-info-label">1問の制限時間</span>
+        </div>
       </div>
 
-      <div className="module-divider">または</div>
-
-      <button className="btn btn-primary btn-full" onClick={() => onStart('all')}>
-        全モジュール まとめてテスト（{questions.length}問）
+      <button className="btn btn-primary btn-full module-start-btn" onClick={() => onStart('all')}>
+        テストをスタートする
       </button>
 
       <div className="module-note">
-        <strong>合格ライン：80%以上</strong>
-        <br />
-        合格するとベーシック認証の申請が可能になります
+        制限時間を超えると自動的に次の問題へ進みます
       </div>
     </div>
   )

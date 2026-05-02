@@ -14,7 +14,7 @@ export type QuizState = {
   selectedModule: number | 'all'
   questions: Question[]
   currentIndex: number
-  answers: (number | null)[]
+  answers: (number | null)[] // null = タイムアウト（未回答）
 }
 
 export default function App() {
@@ -28,9 +28,7 @@ export default function App() {
   }
 
   function startQuiz(module: number | 'all') {
-    const qs = module === 'all'
-      ? [...questions].sort(() => Math.random() - 0.5)
-      : questions.filter(q => q.module === module).sort(() => Math.random() - 0.5)
+    const qs = [...questions].sort(() => Math.random() - 0.5)
     setQuizState({
       selectedModule: module,
       questions: qs,
@@ -40,7 +38,7 @@ export default function App() {
     setScreen('quiz')
   }
 
-  function submitAnswer(index: number) {
+  function submitAnswer(index: number | null) {
     if (!quizState) return
     const newAnswers = [...quizState.answers]
     newAnswers[quizState.currentIndex] = index

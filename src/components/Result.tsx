@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import type { QuizState } from '../App'
-import { MODULE_NAMES, PASS_SCORE } from '../data/questions'
+import { PASS_SCORE } from '../data/questions'
 import './Result.css'
 
 type Props = {
@@ -22,9 +22,7 @@ export function Result({ state, userName, onRestart }: Props) {
     year: 'numeric', month: 'long', day: 'numeric'
   })
 
-  const moduleName = state.selectedModule === 'all'
-    ? '全モジュール'
-    : MODULE_NAMES[state.selectedModule as number]
+  const moduleName = '全モジュール'
 
   function handlePrint() {
     window.print()
