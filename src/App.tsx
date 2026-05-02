@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { ModuleSelect } from './components/ModuleSelect'
 import { Quiz } from './components/Quiz'
 import { Result } from './components/Result'
+import { GuideText } from './components/GuideText'
 import { questions } from './data/questions'
 import type { Question } from './data/questions'
 import './App.css'
 
-export type Screen = 'home' | 'quiz' | 'result'
+export type Screen = 'home' | 'guide' | 'quiz' | 'result'
 
 export type QuizState = {
   selectedModule: number | 'all'
@@ -65,7 +66,8 @@ export default function App() {
       </header>
 
       <main className="app-main">
-        {screen === 'home' && <ModuleSelect onStart={startQuiz} />}
+        {screen === 'home' && <ModuleSelect onStart={startQuiz} onGuide={() => setScreen('guide')} />}
+        {screen === 'guide' && <GuideText onBack={() => setScreen('home')} />}
         {screen === 'quiz' && quizState && (
           <Quiz state={quizState} onAnswer={submitAnswer} />
         )}

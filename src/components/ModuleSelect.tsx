@@ -3,9 +3,10 @@ import './ModuleSelect.css'
 
 type Props = {
   onStart: (module: number | 'all') => void
+  onGuide: () => void
 }
 
-export function ModuleSelect({ onStart }: Props) {
+export function ModuleSelect({ onStart, onGuide }: Props) {
   const modules = Object.entries(MODULE_NAMES)
 
   return (
@@ -13,6 +14,10 @@ export function ModuleSelect({ onStart }: Props) {
       <div className="module-hero">
         <p className="module-tagline">酒蔵の知識を学び、地域のガイドとして活躍しよう</p>
       </div>
+
+      <button className="guide-entry-btn" onClick={onGuide}>
+        蔵見学テキストを読む（学習コンテンツ）
+      </button>
 
       <h2 className="module-heading">テストを選択してください</h2>
 
