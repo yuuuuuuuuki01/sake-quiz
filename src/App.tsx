@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { NameInput } from './components/NameInput'
 import { ModuleSelect } from './components/ModuleSelect'
 import { Quiz } from './components/Quiz'
 import { Result } from './components/Result'
@@ -7,7 +8,7 @@ import { questions } from './data/questions'
 import type { Question } from './data/questions'
 import './App.css'
 
-export type Screen = 'home' | 'guide' | 'quiz' | 'result'
+export type Screen = 'name' | 'home' | 'guide' | 'quiz' | 'result'
 
 export type QuizState = {
   selectedModule: number | 'all'
@@ -17,8 +18,14 @@ export type QuizState = {
 }
 
 export default function App() {
-  const [screen, setScreen] = useState<Screen>('home')
+  const [screen, setScreen] = useState<Screen>('name')
+  const [userName, setUserName] = useState('')
   const [quizState, setQuizState] = useState<QuizState | null>(null)
+
+  function handleNameSubmit(name: string) {
+    setUserName(name)
+    setScreen('home')
+  }
 
   function startQuiz(module: number | 'all') {
     const qs = module === 'all'
@@ -66,13 +73,20 @@ export default function App() {
       </header>
 
       <main className="app-main">
-        {screen === 'home' && <ModuleSelect onStart={startQuiz} onGuide={() => setScreen('guide')} />}
+        {screen === 'name' && <NameInput onNext={handleNameSubmit} />}
+        {screen === 'home' && (
+          <ModuleSelect
+            userName={userName}
+            onStart={startQuiz}
+            onGuide={() => setScreen('guide')}
+          />
+        )}
         {screen === 'guide' && <GuideText onBack={() => setScreen('home')} />}
         {screen === 'quiz' && quizState && (
           <Quiz state={quizState} onAnswer={submitAnswer} />
         )}
         {screen === 'result' && quizState && (
-          <Result state={quizState} onRestart={restart} />
+          <Result state={quizState} userName={userName} onRestart={restart} />
         )}
       </main>
     </div>

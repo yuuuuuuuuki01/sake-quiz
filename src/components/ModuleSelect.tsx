@@ -2,17 +2,18 @@ import { MODULE_NAMES, questions } from '../data/questions'
 import './ModuleSelect.css'
 
 type Props = {
+  userName: string
   onStart: (module: number | 'all') => void
   onGuide: () => void
 }
 
-export function ModuleSelect({ onStart, onGuide }: Props) {
+export function ModuleSelect({ userName, onStart, onGuide }: Props) {
   const modules = Object.entries(MODULE_NAMES)
 
   return (
     <div className="module-select card">
       <div className="module-hero">
-        <p className="module-tagline">酒蔵の知識を学び、地域のガイドとして活躍しよう</p>
+        <p className="module-tagline"><strong>{userName}</strong> さん、ようこそ。テストを選択してください。</p>
       </div>
 
       <button className="guide-entry-btn" onClick={onGuide}>
