@@ -1,5 +1,5 @@
-import { questions } from '../data/questions'
-import { PASS_SCORE } from '../data/questions'
+import { questions } from '@guide-data/questions'
+import { PASS_SCORE } from '@guide-data/questions'
 import './ModuleSelect.css'
 
 type Props = {

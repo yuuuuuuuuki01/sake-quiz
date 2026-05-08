@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { guideSections } from '../data/guide'
+import { guideSections } from '@guide-data/guide'
 import './GuideText.css'
 
 type Props = {

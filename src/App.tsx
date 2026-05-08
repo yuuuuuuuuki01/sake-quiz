@@ -4,8 +4,8 @@ import { ModuleSelect } from './components/ModuleSelect'
 import { Quiz } from './components/Quiz'
 import { Result } from './components/Result'
 import { GuideText } from './components/GuideText'
-import { questions } from './data/questions'
-import type { Question } from './data/questions'
+import { questions } from '@guide-data/questions'
+import type { Question } from '@guide-data/questions'
 import './App.css'
 
 export type Screen = 'name' | 'home' | 'guide' | 'quiz' | 'result'
@@ -64,14 +64,12 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <div className="header-inner">
-          <span className="header-logo">白笹鼓</span>
-          <h1 className="header-title">公認ガイド認証テスト</h1>
-          <span className="header-sub">金井酒造店</span>
+          <h1 className="header-title">金井酒造店 公認ガイド認証テスト</h1>
         </div>
       </header>
 
       <main className="app-main">
-        {screen === 'name' && <NameInput onNext={handleNameSubmit} />}
+        {screen === 'name' && <NameInput onNext={handleNameSubmit} onGuide={() => setScreen('guide')} />}
         {screen === 'home' && (
           <ModuleSelect
             userName={userName}
@@ -79,7 +77,7 @@ export default function App() {
             onGuide={() => setScreen('guide')}
           />
         )}
-        {screen === 'guide' && <GuideText onBack={() => setScreen('home')} />}
+        {screen === 'guide' && <GuideText onBack={() => setScreen(userName ? 'home' : 'name')} />}
         {screen === 'quiz' && quizState && (
           <Quiz state={quizState} onAnswer={submitAnswer} />
         )}

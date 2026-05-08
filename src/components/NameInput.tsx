@@ -1,11 +1,13 @@
 import { useState } from 'react'
+import { questions, PASS_SCORE } from '@guide-data/questions'
 import './NameInput.css'
 
 type Props = {
   onNext: (name: string) => void
+  onGuide: () => void
 }
 
-export function NameInput({ onNext }: Props) {
+export function NameInput({ onNext, onGuide }: Props) {
   const [name, setName] = useState('')
 
   function handleSubmit(e: React.FormEvent) {
@@ -20,6 +22,10 @@ export function NameInput({ onNext }: Props) {
         <h2 className="name-title">公認ガイド<br />認証テスト</h2>
         <p className="name-sub">蔵見学ガイドとしての知識を証明しましょう</p>
       </div>
+
+      <button className="guide-entry-btn name-guide-btn" onClick={onGuide}>
+        蔵見学テキストを読む（事前学習）
+      </button>
 
       <form className="name-form" onSubmit={handleSubmit}>
         <label className="name-label" htmlFor="name">
@@ -48,12 +54,12 @@ export function NameInput({ onNext }: Props) {
 
       <div className="name-info">
         <div className="name-info-item">
-          <span className="name-info-num">25問</span>
+          <span className="name-info-num">{questions.length}問</span>
           <span className="name-info-label">全モジュール</span>
         </div>
         <div className="name-info-divider" />
         <div className="name-info-item">
-          <span className="name-info-num">80点</span>
+          <span className="name-info-num">{PASS_SCORE}点</span>
           <span className="name-info-label">合格ライン</span>
         </div>
         <div className="name-info-divider" />

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import type { QuizState } from '../App'
-import { PASS_SCORE } from '../data/questions'
+import { PASS_SCORE } from '@guide-data/questions'
 import './Result.css'
 
 type Props = {
