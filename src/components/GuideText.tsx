@@ -199,7 +199,7 @@ export function GuideText({ onBack }: Props) {
                 setActive(guideSections[idx - 1].id)
               }}
             >
-              \u2190 前へ
+              ← 前へ
             </button>
           )}
           <span />
@@ -211,7 +211,7 @@ export function GuideText({ onBack }: Props) {
                 setActive(guideSections[idx + 1].id)
               }}
             >
-              次へ \u2192
+              次へ →
             </button>
           )}
         </div>
