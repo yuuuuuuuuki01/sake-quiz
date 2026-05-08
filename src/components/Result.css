@@ -4,17 +4,19 @@
   gap: 24px;
 }
 
+/* ── バッジ ── */
 .result-badge {
   text-align: center;
   font-size: 28px;
   font-weight: bold;
   letter-spacing: 0.15em;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 14px;
+  border-radius: 10px;
 }
-.result-badge.pass { color: #2e7d32; background: #e8f5e9; }
-.result-badge.fail { color: #c62828; background: #ffebee; }
+.result-badge.pass { color: #2e7d32; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+.result-badge.fail { color: #c62828; background: linear-gradient(135deg, #ffebee, #ffcdd2); }
 
+/* ── スコア ── */
 .result-score {
   text-align: center;
   display: flex;
@@ -22,17 +24,18 @@
   justify-content: center;
   gap: 4px;
 }
-.score-num { font-size: 64px; font-weight: bold; color: var(--sake-green); line-height: 1; }
-.score-unit { font-size: 24px; color: var(--sake-green); }
+.score-num { font-size: 72px; font-weight: bold; color: var(--sake-green); line-height: 1; }
+.score-unit { font-size: 26px; color: var(--sake-green); font-weight: bold; }
 .score-detail { font-size: 14px; color: var(--text-sub); margin-left: 8px; }
 
+/* ── メッセージ ── */
 .result-message {
-  border-radius: 8px;
-  padding: 16px;
-  font-size: 14px;
-  line-height: 1.7;
+  border-radius: 10px;
+  padding: 18px 20px;
+  font-size: 15px;
+  line-height: 1.8;
 }
-.result-message strong { display: block; font-size: 15px; margin-bottom: 6px; }
+.result-message strong { display: block; font-size: 16px; margin-bottom: 6px; }
 .result-message.pass { background: #e8f5e9; border-left: 4px solid #2e7d32; color: #1b5e20; }
 .result-message.fail { background: #fff8e1; border-left: 4px solid var(--sake-gold); color: #5d4037; }
 
@@ -40,18 +43,19 @@
 .certificate {
   padding: 3px;
   background: linear-gradient(135deg, #8B6914 0%, #D4AF37 30%, #F5E070 50%, #D4AF37 70%, #8B6914 100%);
-  border-radius: 4px;
+  border-radius: 6px;
+  box-shadow: var(--shadow-lg);
 }
 
 .cert-outer {
   background: white;
   padding: 3px;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 .cert-inner {
   border: 1px solid #D4AF37;
-  padding: 32px 36px 24px;
+  padding: 36px 40px 28px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -62,10 +66,9 @@
     white;
 }
 
-/* 四隅の飾り */
 .cert-inner::before,
 .cert-inner::after {
-  content: '✦';
+  content: '\2726';
   position: absolute;
   color: #D4AF37;
   font-size: 18px;
@@ -157,8 +160,8 @@
   gap: 6px;
   background: #fafaf5;
   border: 1px solid #ede8cc;
-  border-radius: 6px;
-  padding: 14px 18px;
+  border-radius: 8px;
+  padding: 16px 20px;
 }
 
 .cert-meta-item {
@@ -167,14 +170,8 @@
   font-size: 13px;
 }
 
-.cert-meta-label {
-  color: var(--text-sub);
-}
-
-.cert-meta-value {
-  font-weight: bold;
-  color: var(--text);
-}
+.cert-meta-label { color: var(--text-sub); }
+.cert-meta-value { font-weight: bold; color: var(--text); }
 
 .cert-footer {
   display: flex;
@@ -194,21 +191,9 @@
   box-shadow: 0 2px 8px rgba(26,107,58,0.3);
 }
 
-.cert-seal-inner {
-  text-align: center;
-  color: white;
-}
-
-.cert-seal-text {
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 0.05em;
-}
-
-.cert-seal-sub {
-  font-size: 9px;
-  opacity: 0.85;
-}
+.cert-seal-inner { text-align: center; color: white; }
+.cert-seal-text { font-size: 13px; font-weight: bold; letter-spacing: 0.05em; }
+.cert-seal-sub { font-size: 9px; opacity: 0.85; }
 
 .cert-sign {
   text-align: right;
@@ -217,16 +202,8 @@
   gap: 6px;
 }
 
-.cert-sign-line {
-  width: 140px;
-  height: 1px;
-  background: #ccc;
-}
-
-.cert-sign-label {
-  font-size: 12px;
-  color: var(--text-sub);
-}
+.cert-sign-line { width: 140px; height: 1px; background: #ccc; }
+.cert-sign-label { font-size: 12px; color: var(--text-sub); }
 
 .cert-note {
   font-size: 11px;
@@ -236,7 +213,7 @@
   padding-top: 12px;
 }
 
-/* 印刷ボタン */
+/* ── 印刷ボタン ── */
 .cert-actions {
   display: flex;
   gap: 12px;
@@ -248,7 +225,6 @@
   text-decoration: none;
 }
 
-/* 印刷時は認証書だけ表示 */
 @media print {
   .app-header,
   .result-badge,
@@ -259,40 +235,38 @@
   .result-actions {
     display: none !important;
   }
-
-  .app-main {
-    padding: 0 !important;
-  }
-
-  .result {
-    box-shadow: none;
-    border: none;
-    padding: 0;
-  }
-
-  .certificate {
-    width: 100%;
-  }
+  .app-main { padding: 0 !important; }
+  .result { box-shadow: none; border: none; padding: 0; }
+  .certificate { width: 100%; }
 }
 
-/* ── Breakdown ── */
-.breakdown-title { font-size: 15px; margin-bottom: 12px; }
+/* ── 振り返り ── */
+.breakdown-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--sake-green-light);
+  color: var(--text);
+}
 
 .breakdown-item {
   display: flex;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 8px;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 10px;
   margin-bottom: 8px;
   font-size: 14px;
+  line-height: 1.6;
+  transition: background 0.15s;
 }
 .breakdown-item.ok { background: #f1f8f2; }
 .breakdown-item.ng { background: #fff5f5; }
 
-.breakdown-mark { font-size: 16px; font-weight: bold; min-width: 20px; }
+.breakdown-mark { font-size: 18px; font-weight: bold; min-width: 24px; }
 .breakdown-item.ok .breakdown-mark { color: #2e7d32; }
 .breakdown-item.ng .breakdown-mark { color: #c62828; }
 
 .breakdown-body { flex: 1; }
-.breakdown-q { color: var(--text); line-height: 1.5; }
-.breakdown-ans { margin-top: 4px; color: #c62828; font-size: 13px; }
+.breakdown-q { color: var(--text); line-height: 1.6; }
+.breakdown-ans { margin-top: 6px; color: #c62828; font-size: 13px; font-weight: 500; }
